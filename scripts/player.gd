@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const BASE_SPEED: float = 100.0
 @export var sprint_multiplier: float = 2.0
-@onready var camera: Camera2D = $Camera2D
+
 
 func _ready() -> void:
 	camera.enabled = is_multiplayer_authority()
@@ -24,5 +24,4 @@ func _physics_process(_delta: float) -> void:
 		speed_multiplier = sprint_multiplier
 	
 	velocity = direction * BASE_SPEED * speed_multiplier
-	print("DIR:", direction, " AUTH:", is_multiplayer_authority())
 	move_and_slide()

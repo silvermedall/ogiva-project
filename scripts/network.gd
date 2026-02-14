@@ -12,8 +12,9 @@ func start_server() -> void:
 	print(peer)
 
 
-func start_client() -> void:
+func start_client(username: String) -> void:
 	peer = ENetMultiplayerPeer.new()
 	peer.create_client(IP_ADDRESS, PORT)
 	multiplayer.multiplayer_peer = peer
-	print(peer)
+	var a = ServerStorage.rpc_id(1, "register_username", peer.get_unique_id(), username)
+	print(multiplayer.get_peers())

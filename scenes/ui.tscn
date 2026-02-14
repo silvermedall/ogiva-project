@@ -1,26 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://couj8x3qlney0"]
+[gd_scene load_steps=3 format=3 uid="uid://couj8x3qlney0"]
 
 [ext_resource type="Script" uid="uid://b7ahs21w4omu5" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://dm6ocihsxmoub" path="res://scripts/sanity_check.gd" id="2_x4jx1"]
 
-[node name="UI" type="Control"]
+[node name="ui" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_nt7q6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Server" type="Button" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(101, 0)
+layout_mode = 2
+
+[node name="Server" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "SERVER"
 
-[node name="Client" type="Button" parent="VBoxContainer"]
+[node name="Client" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "CLIENT"
 
-[connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]
-[connection signal="pressed" from="VBoxContainer/Client" to="." method="_on_client_pressed"]
+[node name="SanityCheck" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sanity Check"
+script = ExtResource("2_x4jx1")
+
+[node name="Username" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Username"
+alignment = 1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Server" to="." method="_on_server_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Client" to="." method="_on_client_pressed"]
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/Username" to="." method="_on_line_edit_text_changed"]
