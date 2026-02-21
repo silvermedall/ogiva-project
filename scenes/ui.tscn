@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://couj8x3qlney0"]
+[gd_scene load_steps=2 format=3 uid="uid://couj8x3qlney0"]
 
 [ext_resource type="Script" uid="uid://b7ahs21w4omu5" path="res://scripts/ui.gd" id="1_nt7q6"]
-[ext_resource type="Script" uid="uid://dm6ocihsxmoub" path="res://scripts/sanity_check.gd" id="2_x4jx1"]
 
 [node name="ui" type="Control"]
 layout_mode = 3
@@ -30,7 +29,6 @@ text = "CLIENT"
 [node name="SanityCheck" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sanity Check"
-script = ExtResource("2_x4jx1")
 
 [node name="Username" type="LineEdit" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -39,4 +37,5 @@ alignment = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Server" to="." method="_on_server_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Client" to="." method="_on_client_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SanityCheck" to="." method="_on_sanity_check_pressed"]
 [connection signal="text_changed" from="CenterContainer/VBoxContainer/Username" to="." method="_on_line_edit_text_changed"]
